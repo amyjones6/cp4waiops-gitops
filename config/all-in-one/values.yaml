@@ -11,7 +11,7 @@ argocd:
 
   # The Argo CD namespace that can be auto-resolved based on cluster type,
   # or you can uncomment below parameter to specificy it explicitly.
-  # namespace: argocd
+  namespace: argocd
 
   # Allow apps to be deployed on the same cluster where Argo CD runs.
   allowLocalDeploy: true
@@ -63,10 +63,10 @@ cp4waiops:
   version: v3.5
 
   # The username of image registry used to pull CP4WAIOps images.
-  #dockerUsername: cp
+  dockerUsername: cp
 
   # The password of image registry used to pull CP4WAIOps images.
-  #dockerPassword: REPLACE_IT
+  dockerPassword: REPLACE_IT
 
   # The CP4WAIOps deployment profile, e.g.: x-small, small, large.
   # NOTE: The profile x-small is only for small PoC or demo. If you are looking
@@ -76,13 +76,13 @@ cp4waiops:
   # isSNO: false
   
   # The storage class for CP4WAIOps to use.
-  # storageClass: rook-cephfs
+  storageClass: rook-cephfs
 
   # The storage class for large block for CP4WAIOps to use.
-  # storageClassLargeBlock: rook-cephfs
+  storageClassLargeBlock: rook-cephfs
 
   # imageCatalog for cp-shared, ai-manager and event-manager, override if custom build is used
-  # imageCatalog: icr.io/cpopen/ibm-operator-catalog:latest
+  imageCatalog: icr.io/cpopen/ibm-operator-catalog:latest
 
   # AIManager specific configuration
   aiManager:
@@ -100,28 +100,28 @@ cp4waiops:
     enabled: true
     # The domain name of the cluster where Event Manager is installed.
     # Use fully qualified domain name(FQDN), e.g.: apps.clustername.abc.xyz.com.
-    clusterDomain: REPLACE_IT
+    clusterDomain: console-openshift-console.cloudpak-automation-clust-ecf58268eb10995f067698dffc82d2a7-0000.eu-gb.containers.appdomain.cloud
     # The namespace where Event Manager is installed.
     namespace: noi
     # The version of Event Manager.
-    # version: 1.6.4
+    version: 1.6.4
     # The deployment type of Event Manager, values include: trial, production.
-    # deploymentType: trial
+    deploymentType: trial
 
   # Setup CP4WAIOps after installed
-  # setup:
+  setup:
     # Specify whether or not to setup CP4WAIOps with sample integrations, e.g.:
     # Humio, Kafka, Kubernetes, etc. after it is installed.
-    # enabled: true
+    enabled: true
     # Setup Humio integration
-    # humio:
-    #   enabled: false
+    humio:
+      enabled: false
     # Setup Kafka integration
-    # kafka:
-    #   enabled: false
+    kafka:
+      enabled: false
     # Setup Kubernetes integration
-    # kubernetes:
-    #   enabled: false
+    kubernetes:
+      enabled: false
 
 # Specify a list of registries for image pull when needed during the install.
 # globalImagePullSecrets:
